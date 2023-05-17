@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'net.nicbell.resourcechecker'
+    compileSdk compile_sdk_version
+
+    splits {
+        density {
+            enable true
+        }
+    }
+
+    defaultConfig {
+        applicationId "net.nicbell.resourcechecker"
+        minSdk min_sdk_version
+        targetSdk target_sdk_version
+        versionCode rc_version_code
+        versionName rc_version
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(':resourcechecker')
+
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    testImplementation "junit:junit:$junit_version"
+}

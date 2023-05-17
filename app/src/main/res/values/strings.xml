@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ResourceChecker</string>
+
+    <string name="device_density">Device density: %1$d</string>
+</resources>
