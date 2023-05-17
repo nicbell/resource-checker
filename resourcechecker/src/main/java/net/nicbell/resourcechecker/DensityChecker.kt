@@ -15,7 +15,7 @@ object DensityChecker {
     )
 
     /**
-     * Checks if the device density is valid for this app
+     * Checks app has resources for device's target density.
      */
     fun hasResourcesForTargetDensity(context: Context): Boolean {
         return try {
@@ -27,7 +27,8 @@ object DensityChecker {
     }
 
     /**
-     * Lists all densities available in this app
+     * Lists all densities available for resources in this app, universal apps will have all
+     * standard densities available, split apps may be density specific.
      */
     fun getAvailableResourceDensities(context: Context): Collection<String> {
         return densities.filter {
@@ -43,7 +44,8 @@ object DensityChecker {
     }
 
     /**
-     * Return resource target density
+     * Return device's standard target density, densities that fall between standards are mapped to
+     * their nearest match.
      */
     fun getTargetDensity(context: Context): String? {
         val dpi = context.resources.displayMetrics.densityDpi
